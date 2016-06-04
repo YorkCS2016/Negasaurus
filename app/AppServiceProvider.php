@@ -63,19 +63,19 @@ class AppServiceProvider extends ServiceProvider
             ], 202);
         });
 
-        $this->app->post('game/{game}/forfit', function (string $game, Request $request) {
+        $this->app->post('game/{game}/forfeit', function (string $game, Request $request) {
             if ($request->get('player') === null) {
                 throw new HttpException(400, 'Not all the required parameters were provided.');
             }
 
             try {
-                app(Engine::class)->forfit($game, (int) $request->get('player'));
+                app(Engine::class)->forfeit($game, (int) $request->get('player'));
             } catch (GameNotFoundException $e) {
                 throw new HttpException(404, 'The given game does not exist.');
             }
 
             return new JsonResponse([
-                'success' => ['message' => 'You forfit has been accepted!'],
+                'success' => ['message' => 'You forfeit has been accepted!'],
             ], 202);
         });
     }

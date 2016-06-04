@@ -134,14 +134,14 @@ final class Engine
     }
 
     /**
-     * Attempt to forfit the game.
+     * Attempt to forfeit the game.
      *
      * @param string $game
      * @param int    $player
      *
      * @return array
      */
-    public function forfit(string $game, int $player)
+    public function forfeit(string $game, int $player)
     {
         if (!$this->cache->get($game)) {
             throw new GameNotFoundException();
