@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace YorkCS\Negasaurus;
 
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\ServiceProvider;
 use Symfony\Component\HttpKernel\Exception\HttpException;
@@ -42,7 +43,7 @@ class AppServiceProvider extends ServiceProvider
             ], 202);
         });
 
-        $this->app->put('game/{game}/move', function (string $game, Request $request) {
+        $this->app->post('game/{game}/move', function (string $game, Request $request) {
             try {
                 $app->make(Engine::class)->move($game, [$request->get('from_row'), $request->get('from_rol')], [$request->get('to_row'), $request->get('to_col')]);
             } catch (GameNotFoundException $e) {
@@ -58,7 +59,7 @@ class AppServiceProvider extends ServiceProvider
             ], 202);
         });
 
-        $this->app->put('game/{game}/forfit', function (string $game, Request $request) {
+        $this->app->post('game/{game}/forfit', function (string $game, Request $request) {
             $app->make(Engine::class)->forfit($game);
 
             return new JsonResponse([
