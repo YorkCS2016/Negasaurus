@@ -40,9 +40,9 @@ return [
     'connections' => [
 
         'main' => [
-            'auth_key' => app('PUSHER_APP_KEY'),
-            'secret'   => app('PUSHER_APP_SECRET'),
-            'app_id'   => app('PUSHER_APP_ID'),
+            'auth_key' => env('PUSHER_APP_KEY'),
+            'secret'   => env('PUSHER_APP_SECRET'),
+            'app_id'   => env('PUSHER_APP_ID'),
             'options'  => [],
             'host'     => null,
             'port'     => null,
