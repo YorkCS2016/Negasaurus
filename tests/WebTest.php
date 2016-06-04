@@ -26,6 +26,6 @@ class WebTest extends AbstractTestCase
 
         $this->assertResponseOk();
 
-        $this->seeJsonEquals(['meta' => ['message' => 'You have arrived!']]);
+        $this->seeJsonEquals(['success' => ['message' => 'You have arrived!']]);
     }
 }
