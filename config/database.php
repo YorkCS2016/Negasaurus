@@ -58,7 +58,7 @@ return [
     'connections' => [
 
         'testing' => [
-            'driver' => 'sqlite',
+            'driver'   => 'sqlite',
             'database' => ':memory:',
         ],
 
