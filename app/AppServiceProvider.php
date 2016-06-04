@@ -39,13 +39,13 @@ class AppServiceProvider extends ServiceProvider
         $this->app->post('game', function (Request $request) {
             return new JsonResponse([
                 'success' => ['message' => 'Your game will begin shortly!'],
-                'data'    => $app->make(Engine::class)->start($request->get('new')),
+                'data'    => $this->app->make(Engine::class)->start($request->get('new')),
             ], 202);
         });
 
         $this->app->post('game/{game}/move', function (string $game, Request $request) {
             try {
-                $app->make(Engine::class)->move($game, $request->get('player'), [$request->get('from_row'), $request->get('from_rol')], [$request->get('to_row'), $request->get('to_col')]);
+                $this->app->make(Engine::class)->move($game, $request->get('player'), [$request->get('from_row'), $request->get('from_rol')], [$request->get('to_row'), $request->get('to_col')]);
             } catch (GameNotFoundException $e) {
                 throw new HttpException(404, 'The given game does not exist.');
             } catch (OpponentMovingException $e) {
@@ -60,7 +60,7 @@ class AppServiceProvider extends ServiceProvider
         });
 
         $this->app->post('game/{game}/forfit', function (string $game, Request $request) {
-            $app->make(Engine::class)->forfit($game);
+            $this->app->make(Engine::class)->forfit($game);
 
             return new JsonResponse([
                 'success' => ['message' => 'You forgit has been accepted!'],
