@@ -224,7 +224,7 @@ final class State
      */
     private function swapTurns()
     {
-        $this->current = $this->current === State::WHITE ? State::BLACK : State::WHITE;
+        $this->current = $this->current === self::WHITE ? self::BLACK : self::WHITE;
     }
 
     /**

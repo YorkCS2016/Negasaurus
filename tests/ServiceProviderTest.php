@@ -13,11 +13,11 @@ declare(strict_types=1);
 
 namespace YorkCS\Tests\Negasaurus;
 
+use GrahamCampbell\TestBenchCore\LaravelTrait;
+use GrahamCampbell\TestBenchCore\ServiceProviderTrait;
 use YorkCS\Negasaurus\AppServiceProvider;
 use YorkCS\Negasaurus\Engine;
 use YorkCS\Negasaurus\Validator;
-use GrahamCampbell\TestBenchCore\LaravelTrait;
-use GrahamCampbell\TestBenchCore\ServiceProviderTrait;
 
 class ServiceProviderTest extends AbstractTestCase
 {

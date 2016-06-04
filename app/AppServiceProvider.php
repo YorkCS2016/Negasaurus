@@ -17,8 +17,8 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\ServiceProvider;
 use Symfony\Component\HttpKernel\Exception\HttpException;
-use YorkCS\Negasaurus\Exceptions\InvalidMoveException;
 use YorkCS\Negasaurus\Exceptions\GameNotFoundException;
+use YorkCS\Negasaurus\Exceptions\InvalidMoveException;
 use YorkCS\Negasaurus\Exceptions\OpponentMovingException;
 
 class AppServiceProvider extends ServiceProvider
