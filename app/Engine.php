@@ -110,7 +110,7 @@ final class Engine
             throw new GameNotFoundException();
         }
 
-        $state = State::create($game)
+        $state = State::create($game);
 
         if ($state->getCurrentPlayer() !== $player) {
             throw new OpponentMovingException();

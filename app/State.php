@@ -179,7 +179,7 @@ final class State
      */
     public function makeMove(array $from, array $to)
     {
-        if ($this->board[$to[0], $to[1]][0] !== null) {
+        if ($this->board[$to[0]][$to[1]][0] !== null) {
             $this->takePiece($to);
         }
 
@@ -197,7 +197,7 @@ final class State
      */
     private function takePiece(array $pos)
     {
-        $this->taken[$this->current][] = $this->board[$pos[0], $pos[1]][0];
+        $this->taken[$this->current][] = $this->board[$pos[0]][$pos[1]][0];
 
         $this->board[$pos[0]][$pos[1]] = [null, null];
     }

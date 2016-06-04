@@ -54,7 +54,7 @@ final class Validator
      */
     public function checkFromPiece(array $board, int $player, array $from, array $to)
     {
-        return $board[$from[0], $from[1]][1] === $player;
+        return $board[$from[0]][$from[1]][1] === $player;
     }
 
     /**
@@ -69,7 +69,7 @@ final class Validator
      */
     public function checkToPiece(array $board, int $player, array $from, array $to)
     {
-        return $board[$to[0], $to[1]][1] !== $player;
+        return $board[$to[0]][$to[1]][1] !== $player;
     }
 
     /**
@@ -101,7 +101,7 @@ final class Validator
      */
     public function isCapture(array $board, int $player, array $from, array $to)
     {
-        return $board[$to[0], $to[1]][1] !== null;
+        return $board[$to[0]][$to[1]][1] !== null;
     }
 
     /**
