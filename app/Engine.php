@@ -106,11 +106,11 @@ final class Engine
      */
     public function move(string $game, int $player, array $from, array $to)
     {
-        if (!($game = $this->cache->get($game))) {
+        if (!($data = $this->cache->get($game))) {
             throw new GameNotFoundException();
         }
 
-        $state = State::create($game);
+        $state = State::create($data);
 
         if ($state->getCurrentPlayer() !== $player) {
             throw new OpponentMovingException();
@@ -143,7 +143,7 @@ final class Engine
      */
     public function forfit(string $game, int $player)
     {
-        if (!($game = $this->cache->get($game))) {
+        if (!$this->cache->get($game)) {
             throw new GameNotFoundException();
         }
 
