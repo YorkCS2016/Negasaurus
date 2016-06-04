@@ -21,7 +21,7 @@ try {
 
 $app = new Laravel\Lumen\Application(realpath(__DIR__.'/../'));
 
-$this->configure('database');
+$app->configure('database');
 
 $app->singleton(Illuminate\Contracts\Debug\ExceptionHandler::class, GrahamCampbell\Exceptions\LumenExceptionHandler::class);
 $app->singleton(Illuminate\Contracts\Console\Kernel::class, Laravel\Lumen\Console\Kernel::class);
