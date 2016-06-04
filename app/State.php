@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace YorkCS\Negasaurus;
 
-final class Engine
+final class State
 {
     /**
      * The white player.
