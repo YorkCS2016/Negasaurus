@@ -14,6 +14,7 @@
         "alt-three/bugsnag": "^1.3",
         "alt-three/logger": "^1.1",
         "graham-campbell/exceptions": "^8.6",
+        "predis/predis": "^1.1",
         "vinkla/pusher": "^2.3",
         "vlucas/phpdotenv": "^2.2"
     },
