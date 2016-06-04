@@ -9,16 +9,16 @@
     "packages": [
         {
             "name": "alt-three/bugsnag",
-            "version": "v1.3.0",
+            "version": "v1.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/AltThree/Bugsnag.git",
-                "reference": "5035d2e840c37dfd033186ceab2248921ee0f4a0"
+                "reference": "0f43ab8219257d09694e2e57d3b6be30834a9695"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AltThree/Bugsnag/zipball/5035d2e840c37dfd033186ceab2248921ee0f4a0",
-                "reference": "5035d2e840c37dfd033186ceab2248921ee0f4a0",
+                "url": "https://api.github.com/repos/AltThree/Bugsnag/zipball/0f43ab8219257d09694e2e57d3b6be30834a9695",
+                "reference": "0f43ab8219257d09694e2e57d3b6be30834a9695",
                 "shasum": ""
             },
             "require": {
@@ -68,7 +68,7 @@
                 "Bridge",
                 "bugsnag"
             ],
-            "time": "2016-04-22 17:23:55"
+            "time": "2016-06-04 20:36:21"
         },
         {
             "name": "alt-three/logger",
