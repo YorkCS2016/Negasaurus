@@ -4,21 +4,21 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "c217dcacd8ed3f1a8c03087a91262429",
-    "content-hash": "344ccf7a5cc8a2e92dbbbb395770e735",
+    "hash": "fe18f7953b323607a0080e5758a66021",
+    "content-hash": "e46528ed959e401ffc7b4a29e3c280ab",
     "packages": [
         {
             "name": "alt-three/bugsnag",
-            "version": "v1.3.1",
+            "version": "v1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/AltThree/Bugsnag.git",
-                "reference": "0f43ab8219257d09694e2e57d3b6be30834a9695"
+                "reference": "61cc9308417d11e7635ca1c6d94909bd2f9ef5b0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AltThree/Bugsnag/zipball/0f43ab8219257d09694e2e57d3b6be30834a9695",
-                "reference": "0f43ab8219257d09694e2e57d3b6be30834a9695",
+                "url": "https://api.github.com/repos/AltThree/Bugsnag/zipball/61cc9308417d11e7635ca1c6d94909bd2f9ef5b0",
+                "reference": "61cc9308417d11e7635ca1c6d94909bd2f9ef5b0",
                 "shasum": ""
             },
             "require": {
@@ -36,7 +36,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.3-dev"
+                    "dev-master": "1.4-dev"
                 }
             },
             "autoload": {
@@ -68,7 +68,7 @@
                 "Bridge",
                 "bugsnag"
             ],
-            "time": "2016-06-04 20:36:21"
+            "time": "2016-06-04 20:44:42"
         },
         {
             "name": "alt-three/logger",
