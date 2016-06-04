@@ -88,7 +88,7 @@ final class Engine
             $this->cache->put($game, $data = State::create()->toArray(), self::TIMEOUT);
             $player = State::BLACK;
 
-            $this->pusher->trigger($data, 'GameUpdatedEvent', $state);
+            $this->pusher->trigger($data, 'GameUpdatedEvent', $data);
         }
 
         return ['game' => $game, 'player' => $player];
