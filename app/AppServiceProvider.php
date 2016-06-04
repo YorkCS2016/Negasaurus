@@ -45,7 +45,7 @@ class AppServiceProvider extends ServiceProvider
 
         $this->app->post('game/{game}/move', function (string $game, Request $request) {
             try {
-                $app->make(Engine::class)->move($game, [$request->get('from_row'), $request->get('from_rol')], [$request->get('to_row'), $request->get('to_col')]);
+                $app->make(Engine::class)->move($game, $request->get('player'), [$request->get('from_row'), $request->get('from_rol')], [$request->get('to_row'), $request->get('to_col')]);
             } catch (GameNotFoundException $e) {
                 throw new HttpException(404, 'The given game does not exist.');
             } catch (OpponentMovingException $e) {
