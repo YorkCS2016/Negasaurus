@@ -49,7 +49,7 @@ class AppServiceProvider extends ServiceProvider
             }
 
             try {
-                app(Engine::class)->move($game, $request->get('player'), [$request->get('from_row'), $request->get('from_rol')], [$request->get('to_row'), $request->get('to_col')]);
+                app(Engine::class)->move($game, (int) $request->get('player'), [(int) $request->get('from_row'), (int) $request->get('from_rol')], [(int) $request->get('to_row'), (int) $request->get('to_col')]);
             } catch (GameNotFoundException $e) {
                 throw new HttpException(404, 'The given game does not exist.');
             } catch (OpponentMovingException $e) {
@@ -63,8 +63,12 @@ class AppServiceProvider extends ServiceProvider
             ], 202);
         });
 
-        $this->app->post('game/{game}/forfit', function (string $game) {
-            app(Engine::class)->forfit($game);
+        $this->app->post('game/{game}/forfit', function (string $game, Request $request) {
+            if ($request->get('player') === null) {
+                throw new HttpException(400, 'Not all the required parameters were provided.');
+            }
+
+            app(Engine::class)->forfit($game, (int) $request->get('player'));
 
             return new JsonResponse([
                 'success' => ['message' => 'You forgit has been accepted!'],
