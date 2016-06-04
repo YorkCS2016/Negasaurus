@@ -1,0 +1,46 @@
+{
+    "name": "york-cs/negasaurus",
+    "description": "An Anti-Chess Server Built In Lumen.",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Graham Campbell",
+            "email": "graham@alt-three.com"
+        }
+    ],
+    "require": {
+        "php": "^7.0.0",
+        "laravel/lumen-framework": "~5.2.7",
+        "graham-campbell/exceptions": "^8.6",
+        "vinkla/pusher": "^2.3",
+        "vlucas/phpdotenv": "^2.2"
+    },
+    "require-dev": {
+        "fzaninotto/faker": "^1.5",
+        "graham-campbell/testbench-core": "^1.1",
+        "phpunit/phpunit": "^5.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "YorkCS\\Negasaurus\\": "app/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "YorkCS\\Tests\\Negasaurus\\": "tests/"
+        }
+    },
+    "config": {
+        "platform": {
+            "php": "7.0.0"
+        },
+        "preferred-install": "dist"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
