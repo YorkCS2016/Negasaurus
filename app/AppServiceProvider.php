@@ -39,7 +39,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->post('game', function (Request $request) {
             return new JsonResponse([
                 'success' => ['message' => 'Your game will begin shortly!'],
-                'data'    => app(Engine::class)->start($request->get('new')),
+                'data'    => app(Engine::class)->start((bool) $request->get('new')),
             ], 202);
         });
 
