@@ -68,7 +68,11 @@ class AppServiceProvider extends ServiceProvider
                 throw new HttpException(400, 'Not all the required parameters were provided.');
             }
 
-            app(Engine::class)->forfit($game, (int) $request->get('player'));
+            try {
+                app(Engine::class)->forfit($game, (int) $request->get('player'));
+            } catch (GameNotFoundException $e) {
+                throw new HttpException(404, 'The given game does not exist.');
+            }
 
             return new JsonResponse([
                 'success' => ['message' => 'You forfit has been accepted!'],
