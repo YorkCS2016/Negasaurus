@@ -71,7 +71,7 @@ class AppServiceProvider extends ServiceProvider
             app(Engine::class)->forfit($game, (int) $request->get('player'));
 
             return new JsonResponse([
-                'success' => ['message' => 'You forgit has been accepted!'],
+                'success' => ['message' => 'You forfit has been accepted!'],
             ], 202);
         });
     }
