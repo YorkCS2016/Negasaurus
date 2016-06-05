@@ -72,6 +72,13 @@ final class State
     const KING = 5;
 
     /**
+     * The piece set size.
+     *
+     * @var int
+     */
+    const SIZE = 16;
+
+    /**
      * The game board.
      *
      * @var int[][]
@@ -157,6 +164,24 @@ final class State
     public function getPiecesTakenBy(int $player)
     {
         return $this->taken[$player];
+    }
+
+    /**
+     * Get the winner of the game.
+     *
+     * Remember, the aim of the game is to lose all your pieces!
+     *
+     * @return int|null
+     */
+    public function getWinner()
+    {
+        if (count($this->taken[self::WHITE]) == self::SIZE) {
+            self::BLACK;
+        }
+
+        if (count($this->taken[self::BLACK]) == self::SIZE) {
+            self::WHITE;
+        }
     }
 
     /**
