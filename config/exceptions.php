@@ -93,7 +93,7 @@ return [
     */
 
     'levels' => [
-        'Symfony\Component\HttpKernel\Exception\HttpExceptionInterface' => 'warning',
+        // 'Symfony\Component\HttpKernel\Exception\HttpExceptionInterface' => 'warning',
         'Symfony\Component\Debug\Exception\FatalErrorException'         => 'critical',
         'Exception'                                                     => 'error',
     ],
