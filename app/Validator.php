@@ -13,6 +13,8 @@ declare(strict_types=1);
 
 namespace YorkCS\Negasaurus;
 
+use YorkCS\Negasaurus\Exceptions\InvalidMoveException;
+
 final class Validator
 {
     /**
@@ -22,6 +24,8 @@ final class Validator
      * @param int     $player
      * @param int[]   $from
      * @param int[]   $to
+     *
+     * @throws \YorkCS\Negasaurus\Exceptions\InvalidMoveException
      *
      * @return void
      */
