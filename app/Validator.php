@@ -23,23 +23,25 @@ final class Validator
      * @param int[]   $from
      * @param int[]   $to
      *
-     * @return bool
+     * @return void
      */
     public function validate(array $board, int $player, array $from, array $to)
     {
         if (!$this->checkFromPiece($board, $player, $from, $to)) {
-            return false;
+            throw new InvalidMoveException('You must choose a piece that belongs to you.');
         }
 
         if (!$this->checkToPiece($board, $player, $from, $to)) {
-            return false;
+            throw new InvalidMoveException('You cannot take one of your own pieces.');
         }
 
         if (!$this->canMoveThere($board, $player, $from, $to)) {
-            return false;
+            throw new InvalidMoveException('Your piece cannot move like that.');
         }
 
-        return $this->isCapture($board, $player, $from, $to) || $this->noCapturesAreAvailable($board, $player, $from, $to);
+        if (!$this->isCapture($board, $player, $from, $to) && $this->capturesAreAvailable($board, $player, $from, $to)) {
+            throw new InvalidMoveException('You must take one of your opponent\'s pieces.');
+        }
     }
 
     /**
@@ -105,7 +107,7 @@ final class Validator
     }
 
     /**
-     * Is it not possible to capture a piece?
+     * Is it possible to capture a piece?
      *
      * @param int[][] $board
      * @param int     $player
@@ -114,7 +116,7 @@ final class Validator
      *
      * @return bool
      */
-    public function noCapturesAreAvailable(array $board, int $player, array $from, array $to)
+    public function capturesAreAvailable(array $board, int $player, array $from, array $to)
     {
         // TODO
 

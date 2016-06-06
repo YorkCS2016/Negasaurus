@@ -107,18 +107,16 @@ final class Engine
     public function move(string $game, int $player, array $from, array $to)
     {
         if (!($data = $this->cache->get($game))) {
-            throw new GameNotFoundException();
+            throw new GameNotFoundException('The given game does not exist.');
         }
 
         $state = State::create($data);
 
         if ($state->getCurrentPlayer() !== $player) {
-            throw new OpponentMovingException();
+            throw new OpponentMovingException('Your opponent is currently moving.');
         }
 
-        if (!$this->validator->validate($state->getBoard(), $state->getCurrentPlayer(), $from, $to)) {
-            throw new InvalidMoveException();
-        }
+        $this->validator->validate($state->getBoard(), $state->getCurrentPlayer(), $from, $to));
 
         $state->makeMove($from, $to);
 
@@ -144,7 +142,7 @@ final class Engine
     public function forfeit(string $game, int $player)
     {
         if (!$this->cache->get($game)) {
-            throw new GameNotFoundException();
+            throw new GameNotFoundException('The given game does not exist.');
         }
 
         $this->cache->forget($game);

@@ -51,11 +51,11 @@ class AppServiceProvider extends ServiceProvider
             try {
                 app(Engine::class)->move($game, (int) $request->get('player'), [(int) $request->get('from_row'), (int) $request->get('from_rol')], [(int) $request->get('to_row'), (int) $request->get('to_col')]);
             } catch (GameNotFoundException $e) {
-                throw new HttpException(404, 'The given game does not exist.');
+                throw new HttpException(404, $e->getMessage());
             } catch (OpponentMovingException $e) {
-                throw new HttpException(403, 'Your opponent is currently moving.');
+                throw new HttpException(403, $e->getMessage());
             } catch (InvalidMoveException $e) {
-                throw new HttpException(400, 'Your move was not valid.');
+                throw new HttpException(400, $e->getMessage());
             }
 
             return new JsonResponse([
@@ -71,7 +71,7 @@ class AppServiceProvider extends ServiceProvider
             try {
                 app(Engine::class)->forfeit($game, (int) $request->get('player'));
             } catch (GameNotFoundException $e) {
-                throw new HttpException(404, 'The given game does not exist.');
+                throw new HttpException(404, $e->getMessage());
             }
 
             return new JsonResponse([
