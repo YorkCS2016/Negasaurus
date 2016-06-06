@@ -30,18 +30,18 @@ final class State
     const BLACK = 1;
 
     /**
-     * The pawn pice.
+     * The king pice.
      *
      * @var int
      */
-    const PAWN = 0;
+    const KING = 0;
 
     /**
-     * The knight pice.
+     * The queen pice.
      *
      * @var int
      */
-    const KNIGHT = 1;
+    const QUEEN = 1;
 
     /**
      * The bishop pice.
@@ -51,25 +51,25 @@ final class State
     const BISHOP = 2;
 
     /**
+     * The knight pice.
+     *
+     * @var int
+     */
+    const KNIGHT = 3;
+
+    /**
      * The rook pice.
      *
      * @var int
      */
-    const ROOK = 3;
+    const ROOK = 4;
 
     /**
-     * The queen pice.
+     * The pawn pice.
      *
      * @var int
      */
-    const QUEEN = 4;
-
-    /**
-     * The king pice.
-     *
-     * @var int
-     */
-    const KING = 5;
+    const PAWN = 5;
 
     /**
      * The piece set size.
