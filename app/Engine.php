@@ -16,7 +16,6 @@ namespace YorkCS\Negasaurus;
 use Illuminate\Contracts\Cache\Repository;
 use Pusher;
 use YorkCS\Negasaurus\Exceptions\GameNotFoundException;
-use YorkCS\Negasaurus\Exceptions\InvalidMoveException;
 use YorkCS\Negasaurus\Exceptions\OpponentMovingException;
 
 final class Engine
