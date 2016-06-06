@@ -116,7 +116,7 @@ final class Engine
             throw new OpponentMovingException('Your opponent is currently moving.');
         }
 
-        $this->validator->validate($state->getBoard(), $state->getCurrentPlayer(), $from, $to));
+        $this->validator->validate($state->getBoard(), $state->getCurrentPlayer(), $from, $to);
 
         $state->makeMove($from, $to);
 
