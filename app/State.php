@@ -126,14 +126,14 @@ final class State
             $data = [];
 
             $data['board'] = [
-                [[self::ROOK, self::BLACK], [self::KNIGHT, self::BLACK], [self::BISHOP, self::BLACK], [self::QUEEN, self::BLACK], [self::KING, self::BLACK], [self::BISHOP, self::BLACK], [self::KNIGHT, self::BLACK], [self::ROOK, self::BLACK]],
-                [[self::PAWN, self::BLACK], [self::PAWN, self::BLACK], [self::PAWN, self::BLACK], [self::PAWN, self::BLACK], [self::PAWN, self::BLACK], [self::PAWN, self::BLACK], [self::PAWN, self::BLACK], [self::PAWN, self::BLACK]],
-                [[null, null], [null, null], [null, null], [null, null], [null, null], [null, null], [null, null], [null, null]],
-                [[null, null], [null, null], [null, null], [null, null], [null, null], [null, null], [null, null], [null, null]],
-                [[null, null], [null, null], [null, null], [null, null], [null, null], [null, null], [null, null], [null, null]],
-                [[null, null], [null, null], [null, null], [null, null], [null, null], [null, null], [null, null], [null, null]],
-                [[self::PAWN, self::WHITE], [self::PAWN, self::WHITE], [self::PAWN, self::WHITE], [self::PAWN, self::WHITE], [self::PAWN, self::WHITE], [self::PAWN, self::WHITE], [self::PAWN, self::WHITE], [self::PAWN, self::WHITE]],
-                [[self::ROOK, self::WHITE], [self::KNIGHT, self::WHITE], [self::BISHOP, self::WHITE], [self::QUEEN, self::WHITE], [self::KING, self::WHITE], [self::BISHOP, self::WHITE], [self::KNIGHT, self::WHITE], [self::ROOK, self::WHITE]],
+                [[self::ROOK,   self::WHITE], [self::PAWN, self::WHITE], [null, null], [null, null], [null, null], [null, null], [self::PAWN, self::BLACK], [self::ROOK,   self::BLACK]],
+                [[self::KNIGHT, self::WHITE], [self::PAWN, self::WHITE], [null, null], [null, null], [null, null], [null, null], [self::PAWN, self::BLACK], [self::KNIGHT, self::BLACK]],
+                [[self::BISHOP, self::WHITE], [self::PAWN, self::WHITE], [null, null], [null, null], [null, null], [null, null], [self::PAWN, self::BLACK], [self::BISHOP, self::BLACK]],
+                [[self::QUEEN,  self::WHITE], [self::PAWN, self::WHITE], [null, null], [null, null], [null, null], [null, null], [self::PAWN, self::BLACK], [self::QUEEN,  self::BLACK]],
+                [[self::KING,   self::WHITE], [self::PAWN, self::WHITE], [null, null], [null, null], [null, null], [null, null], [self::PAWN, self::BLACK], [self::KING,   self::BLACK]],
+                [[self::BISHOP, self::WHITE], [self::PAWN, self::WHITE], [null, null], [null, null], [null, null], [null, null], [self::PAWN, self::BLACK], [self::BISHOP, self::BLACK]],
+                [[self::KNIGHT, self::WHITE], [self::PAWN, self::WHITE], [null, null], [null, null], [null, null], [null, null], [self::PAWN, self::BLACK], [self::KNIGHT, self::BLACK]],
+                [[self::ROOK,   self::WHITE], [self::PAWN, self::WHITE], [null, null], [null, null], [null, null], [null, null], [self::PAWN, self::BLACK], [self::ROOK,   self::BLACK]],
             ];
 
             $data['taken'] = [self::WHITE => [], self::BLACK => []];
