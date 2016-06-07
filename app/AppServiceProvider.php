@@ -49,7 +49,7 @@ class AppServiceProvider extends ServiceProvider
             }
 
             try {
-                app(Engine::class)->move($game, (int) $request->get('player'), [(int) $request->get('from_row'), (int) $request->get('from_rol')], [(int) $request->get('to_row'), (int) $request->get('to_col')]);
+                app(Engine::class)->move($game, (int) $request->get('player'), [(int) $request->get('from_row'), (int) $request->get('from_col')], [(int) $request->get('to_row'), (int) $request->get('to_col')]);
             } catch (GameNotFoundException $e) {
                 throw new HttpException(404, $e->getMessage());
             } catch (OpponentMovingException $e) {
