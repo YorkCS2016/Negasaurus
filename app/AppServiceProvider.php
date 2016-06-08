@@ -41,7 +41,7 @@ class AppServiceProvider extends ServiceProvider
                 new FromValidator(),
                 new ToValidator(),
                 new MoveValidator(),
-                new CaptureValidator()
+                new CaptureValidator(),
             ]);
         });
 
