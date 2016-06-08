@@ -89,6 +89,6 @@ abstract class AbstractGenerator implements GeneratorInterface
             return static::CAPTURE;
         }
 
-        return static::EMPTY;
+        return static::empty;
     }
 }
