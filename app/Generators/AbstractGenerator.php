@@ -57,9 +57,9 @@ abstract class AbstractGenerator implements GeneratorInterface
             $from[1] += $direction[1];
 
             switch ($this->check($board, $player, $from)) {
-                case INVALID:
+                case static::INVALID:
                     break 2;
-                case CAPTURE:
+                case static::CAPTURE:
                     $moves[] = $from;
                     break 2;
                 default:
