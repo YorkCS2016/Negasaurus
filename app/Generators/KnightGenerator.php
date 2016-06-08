@@ -25,6 +25,6 @@ class KnightGenerator extends AbstractGenerator
      */
     public function generate(array $board, array $from)
     {
-        return $this->walkThrough($board, $from, [[1, 2], [2, 1], [1, -2], [2, -1], [-1, 2],[-2, 1], [-1, -2], [-2, -1]], 1);
+        return $this->walkThrough($board, $from, [[1, 2], [2, 1], [1, -2], [2, -1], [-1, 2], [-2, 1], [-1, -2], [-2, -1]], 1);
     }
 }

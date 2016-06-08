@@ -27,7 +27,7 @@ interface GeneratorInterface
      *
      * @var int
      */
-    const EMPTY = 1;
+    const empty = 1;
 
     /**
      * The invalid status.
