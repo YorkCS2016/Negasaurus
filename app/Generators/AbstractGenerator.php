@@ -25,7 +25,7 @@ abstract class AbstractGenerator implements GeneratorInterface
      *
      * @return int[][]
      */
-    protected function walkThrough(array $board, array $from, array $directions, $limit = null)
+    protected function walkThrough(array $board, array $from, array $directions, int $limit = null)
     {
         $moves = [];
 
@@ -46,7 +46,7 @@ abstract class AbstractGenerator implements GeneratorInterface
      *
      * @return int[][]
      */
-    protected function walk(array $board, array $from, int $direction, $limit = null)
+    protected function walk(array $board, array $from, array $direction, int $limit = null)
     {
         $player = $board[$from[0]][$from[1]][1];
 
