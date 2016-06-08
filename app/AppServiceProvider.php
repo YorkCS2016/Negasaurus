@@ -46,21 +46,21 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->singleton(GeneratorInterface::class, function () {
             return new GeneratorFactory([
-                new FromValidator(),
-                new ToValidator(),
-                new MoveValidator(),
-                new CaptureValidator(),
-            ]);
-        });
-
-        $this->app->singleton(ValidatorInterface::class, function () {
-            return new ValidatorFactory([
                 State::KING   => new KingGenerator(),
                 State::QUEEN  => new QueenGenerator(),
                 State::BISHOP => new BishopGenerator(),
                 State::KNIGHT => new KnightGenerator(),
                 State::ROOK   => new RookGenerator(),
                 State::PAWN   => new PawnGenerator(),
+            ]);
+        });
+
+        $this->app->singleton(ValidatorInterface::class, function () {
+            return new ValidatorFactory([
+                new FromValidator(),
+                new ToValidator(),
+                new MoveValidator(),
+                new CaptureValidator(),
             ]);
         });
 
