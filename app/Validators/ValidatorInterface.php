@@ -22,10 +22,11 @@ interface ValidatorInterface
      * @param int     $player
      * @param int[]   $from
      * @param int[]   $to
+     * @param int[][] $generated
      *
      * @throws \YorkCS\Negasaurus\Exceptions\InvalidMoveException
      *
      * @return void
      */
-    public function validate(array $board, int $player, array $from, array $to);
+    public function validate(array $board, int $player, array $from, array $to, array $generated);
 }

@@ -24,14 +24,15 @@ class CaptureValidator implements ValidatorInterface
      * @param int     $player
      * @param int[]   $from
      * @param int[]   $to
+     * @param int[][] $generated
      *
      * @throws \YorkCS\Negasaurus\Exceptions\InvalidMoveException
      *
      * @return void
      */
-    public function validate(array $board, int $player, array $from, array $to)
+    public function validate(array $board, int $player, array $from, array $to, array $generated)
     {
-        if (!$this->isCapture($board, $player, $from, $to) && $this->capturesAreAvailable($board, $player, $from, $to)) {
+        if (!$this->isCapture($board, $to) && $this->capturesAreAvailable($board, $generated)) {
             throw new InvalidMoveException('You must take one of your opponent\'s pieces.');
         }
     }
@@ -40,13 +41,11 @@ class CaptureValidator implements ValidatorInterface
      * Are we capturing a when we move?
      *
      * @param int[][] $board
-     * @param int     $player
-     * @param int[]   $from
      * @param int[]   $to
      *
      * @return bool
      */
-    public function isCapture(array $board, int $player, array $from, array $to)
+    public function isCapture(array $board, array $to)
     {
         return $board[$to[0]][$to[1]][1] !== null;
     }
@@ -55,15 +54,17 @@ class CaptureValidator implements ValidatorInterface
      * Is it possible to capture a piece?
      *
      * @param int[][] $board
-     * @param int     $player
-     * @param int[]   $from
-     * @param int[]   $to
+     * @param int[][] $generated
      *
      * @return bool
      */
-    public function capturesAreAvailable(array $board, int $player, array $from, array $to)
+    public function capturesAreAvailable(array $board, array $generated)
     {
-        // TODO
+        foreach ($generated as $move) {
+            if ($board[$move[0]][$move[1]][0] !== null) {
+                return true;
+            }
+        }
 
         return false;
     }

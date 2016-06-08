@@ -24,12 +24,13 @@ class ToValidator implements ValidatorInterface
      * @param int     $player
      * @param int[]   $from
      * @param int[]   $to
+     * @param int[][] $generated
      *
      * @throws \YorkCS\Negasaurus\Exceptions\InvalidMoveException
      *
      * @return void
      */
-    public function validate(array $board, int $player, array $from, array $to)
+    public function validate(array $board, int $player, array $from, array $to, array $generated)
     {
         if ($board[$to[0]][$to[1]][1] === $player) {
             throw new InvalidMoveException('You cannot take one of your own pieces.');

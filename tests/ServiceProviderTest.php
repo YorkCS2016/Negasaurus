@@ -17,6 +17,7 @@ use GrahamCampbell\TestBenchCore\LaravelTrait;
 use GrahamCampbell\TestBenchCore\ServiceProviderTrait;
 use YorkCS\Negasaurus\AppServiceProvider;
 use YorkCS\Negasaurus\Engine;
+use YorkCS\Negasaurus\Generators\GeneratorInterface;
 use YorkCS\Negasaurus\Validators\ValidatorInterface;
 
 class ServiceProviderTest extends AbstractTestCase
@@ -31,6 +32,11 @@ class ServiceProviderTest extends AbstractTestCase
     public function testEngineIsInjectable()
     {
         $this->assertIsInjectable(Engine::class);
+    }
+
+    public function testGeneratorInterfaceIsInjectable()
+    {
+        $this->assertIsInjectable(GeneratorInterface::class);
     }
 
     public function testValidatorInterfaceIsInjectable()

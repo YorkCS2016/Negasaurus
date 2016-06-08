@@ -24,12 +24,13 @@ class FromValidator implements ValidatorInterface
      * @param int     $player
      * @param int[]   $from
      * @param int[]   $to
+     * @param int[][] $generated
      *
      * @throws \YorkCS\Negasaurus\Exceptions\InvalidMoveException
      *
      * @return void
      */
-    public function validate(array $board, int $player, array $from, array $to)
+    public function validate(array $board, int $player, array $from, array $to, array $generated)
     {
         if ($board[$from[0]][$from[1]][1] !== $player) {
             throw new InvalidMoveException('You must choose a piece that belongs to you.');

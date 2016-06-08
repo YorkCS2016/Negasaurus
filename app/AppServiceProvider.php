@@ -20,6 +20,14 @@ use Symfony\Component\HttpKernel\Exception\HttpException;
 use YorkCS\Negasaurus\Exceptions\GameNotFoundException;
 use YorkCS\Negasaurus\Exceptions\InvalidMoveException;
 use YorkCS\Negasaurus\Exceptions\OpponentMovingException;
+use YorkCS\Negasaurus\Generators\BishopGenerator;
+use YorkCS\Negasaurus\Generators\GeneratorFactory;
+use YorkCS\Negasaurus\Generators\ValidatorInterface;
+use YorkCS\Negasaurus\Generators\KingGenerator;
+use YorkCS\Negasaurus\Generators\KnightGenerator;
+use YorkCS\Negasaurus\Generators\PawnGenerator;
+use YorkCS\Negasaurus\Generators\QueenGenerator;
+use YorkCS\Negasaurus\Generators\RookGenerator;
 use YorkCS\Negasaurus\Validators\CaptureValidator;
 use YorkCS\Negasaurus\Validators\FromValidator;
 use YorkCS\Negasaurus\Validators\MoveValidator;
@@ -36,12 +44,23 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton(ValidatorInterface::class, function () {
-            return new ValidatorFactory([
+        $this->app->singleton(GeneratorInterface::class, function () {
+            return new GeneratorFactory([
                 new FromValidator(),
                 new ToValidator(),
                 new MoveValidator(),
                 new CaptureValidator(),
+            ]);
+        });
+
+        $this->app->singleton(ValidatorInterface::class, function () {
+            return new ValidatorFactory([
+                State::KING   => new KingGenerator(),
+                State::QUEEN  => new QueenGenerator(),
+                State::BISHOP => new BishopGenerator(),
+                State::KNIGHT => new KnightGenerator(),
+                State::ROOK   => new RookGenerator(),
+                State::PAWN   => new PawnGenerator(),
             ]);
         });
 
