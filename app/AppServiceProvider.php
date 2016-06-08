@@ -22,7 +22,7 @@ use YorkCS\Negasaurus\Exceptions\InvalidMoveException;
 use YorkCS\Negasaurus\Exceptions\OpponentMovingException;
 use YorkCS\Negasaurus\Generators\BishopGenerator;
 use YorkCS\Negasaurus\Generators\GeneratorFactory;
-use YorkCS\Negasaurus\Generators\ValidatorInterface;
+use YorkCS\Negasaurus\Generators\GeneratorInterface;
 use YorkCS\Negasaurus\Generators\KingGenerator;
 use YorkCS\Negasaurus\Generators\KnightGenerator;
 use YorkCS\Negasaurus\Generators\PawnGenerator;
