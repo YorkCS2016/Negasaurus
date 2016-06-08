@@ -16,6 +16,25 @@ namespace YorkCS\Negasaurus\Generators;
 class GeneratorFactory implements GeneratorInterface
 {
     /**
+     * The generators to run.
+     *
+     * @var YorkCS\Negasaurus\Generators\GeneratorInterface[]
+     */
+    protected $generators;
+
+    /**
+     * Create a new generator factory instance.
+     *
+     * @param YorkCS\Negasaurus\Generators\GeneratorInterface[] $generators
+     *
+     * @return void
+     */
+    public function __construct(array $generators)
+    {
+        $this->generators = $generators;
+    }
+
+    /**
      * Generate all the valid moves for a given piece.
      *
      * @param int[][] $board
