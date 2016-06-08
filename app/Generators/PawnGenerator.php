@@ -32,7 +32,7 @@ class PawnGenerator extends AbstractGenerator
 
         $moves = [];
 
-        if ($this->check($board, $player, [0, $direction]) === static::empty) {
+        if ($this->check($board, $player, [0, $direction]) === static::FREE) {
             $moves[] = [0, $direction];
         }
 

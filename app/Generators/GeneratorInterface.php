@@ -23,11 +23,11 @@ interface GeneratorInterface
     const CAPTURE = 0;
 
     /**
-     * The empty status.
+     * The free status.
      *
      * @var int
      */
-    const empty = 1;
+    const FREE = 1;
 
     /**
      * The invalid status.
