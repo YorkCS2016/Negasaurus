@@ -53,8 +53,8 @@ abstract class AbstractGenerator implements GeneratorInterface
         $moves = [];
 
         while ($limit === null || $limit--) {
-            $from[0] += $row;
-            $from[1] += $col;
+            $from[0] += $direction[0];
+            $from[1] += $direction[1];
 
             switch ($this->check($board, $player, $move)) {
                 case INVALID:
