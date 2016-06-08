@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace YorkCS\Negasaurus\Generators;
 
-class GeneratorFactory implements GeneratorInterface
+class RookGenerator implements GeneratorInterface
 {
     /**
      * Generate all the valid moves for a given piece.
