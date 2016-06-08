@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace YorkCS\Negasaurus\Generators;
 
-class KnightGenerator implements GeneratorInterface
+class KnightGenerator extends AbstractGenerator
 {
     /**
      * Generate all the valid moves for a given piece.
@@ -25,6 +25,6 @@ class KnightGenerator implements GeneratorInterface
      */
     public function generate(array $board, array $from)
     {
-        return [];
+        return $this->walkThrough($board, $from, [[1, 2], [2, 1], [1, -2], [2, -1], [-1, 2],[-2, 1], [-1, -2], [-2, -1]], 1);
     }
 }

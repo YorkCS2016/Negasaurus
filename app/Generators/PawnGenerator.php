@@ -13,7 +13,9 @@ declare(strict_types=1);
 
 namespace YorkCS\Negasaurus\Generators;
 
-class PawnGenerator implements GeneratorInterface
+use YorkCS\Negasaurus\State;
+
+class PawnGenerator extends AbstractGenerator
 {
     /**
      * Generate all the valid moves for a given piece.
@@ -25,6 +27,23 @@ class PawnGenerator implements GeneratorInterface
      */
     public function generate(array $board, array $from)
     {
-        return [];
+        $player = $board[$from[0]][$from[1]][1];
+        $direction = $player === State::WHITE ? 1 : -1;
+
+        $moves = [];
+
+        if ($this->check($board, $player, [0, $direction]) === static::EMPTY) {
+            $moves[] = [0, $direction];
+        }
+
+        if ($this->check($board, $player, [-1, $direction]) === static::CAPTURE) {
+            $moves[] = [-1, $direction];
+        }
+
+        if ($this->check($board, $player, [1, $direction]) === static::CAPTURE) {
+            $moves[] = [1, $direction];
+        }
+
+        return $moves;
     }
 }

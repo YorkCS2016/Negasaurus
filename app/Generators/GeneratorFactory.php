@@ -27,6 +27,10 @@ class GeneratorFactory implements GeneratorInterface
     {
         $type = $board[$from[0]][$from[1]][0];
 
+        if ($type === null) {
+            return [];
+        }
+
         return $this->generators[$type]->generate($board, $from);
     }
 }

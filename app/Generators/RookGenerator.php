@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace YorkCS\Negasaurus\Generators;
 
-class RookGenerator implements GeneratorInterface
+class RookGenerator extends AbstractGenerator
 {
     /**
      * Generate all the valid moves for a given piece.
@@ -25,6 +25,6 @@ class RookGenerator implements GeneratorInterface
      */
     public function generate(array $board, array $from)
     {
-        return [];
+        return $this->walkThrough($board, $from, [[1, 0], [0, 1], [0, -1], [-1, 0]]);
     }
 }
