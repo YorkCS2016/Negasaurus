@@ -20,6 +20,12 @@ use Symfony\Component\HttpKernel\Exception\HttpException;
 use YorkCS\Negasaurus\Exceptions\GameNotFoundException;
 use YorkCS\Negasaurus\Exceptions\InvalidMoveException;
 use YorkCS\Negasaurus\Exceptions\OpponentMovingException;
+use YorkCS\Negasaurus\Validators\CaptureValidator;
+use YorkCS\Negasaurus\Validators\FromValidator;
+use YorkCS\Negasaurus\Validators\MoveValidator;
+use YorkCS\Negasaurus\Validators\ToValidator;
+use YorkCS\Negasaurus\Validators\ValidatorFactory;
+use YorkCS\Negasaurus\Validators\ValidatorInterface;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -30,6 +36,15 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->app->singleton(ValidatorInterface::class, function () {
+            return new ValidatorFactory([
+                new FromValidator(),
+                new ToValidator(),
+                new MoveValidator(),
+                new CaptureValidator()
+            ]);
+        });
+
         $this->app->get('/', function () {
             return new JsonResponse([
                 'success' => ['message' => 'You have arrived!'],

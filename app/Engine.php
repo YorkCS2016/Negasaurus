@@ -17,6 +17,7 @@ use Illuminate\Contracts\Cache\Repository;
 use Pusher;
 use YorkCS\Negasaurus\Exceptions\GameNotFoundException;
 use YorkCS\Negasaurus\Exceptions\OpponentMovingException;
+use YorkCS\Negasaurus\Validators\ValidatorInterface;
 
 final class Engine
 {
@@ -51,20 +52,20 @@ final class Engine
     /**
      * The move validator instance.
      *
-     * @var \YorkCS\Negasaurus\Validator
+     * @var \YorkCS\Negasaurus\Validators\ValidatorInterface
      */
     private $validator;
 
     /**
      * Create a new engine instance.
      *
-     * @param \Illuminate\Contracts\Cache\Repository $cache
-     * @param \Pusher                                $pusher
-     * @param \YorkCS\Negasaurus\Validator           $validator
+     * @param \Illuminate\Contracts\Cache\Repository           $cache
+     * @param \Pusher                                          $pusher
+     * @param \YorkCS\Negasaurus\Validators\ValidatorInterface $validator
      *
      * @return void
      */
-    public function __construct(Repository $cache, Pusher $pusher, Validator $validator)
+    public function __construct(Repository $cache, Pusher $pusher, ValidatorInterface $validator)
     {
         $this->cache = $cache;
         $this->pusher = $pusher;
