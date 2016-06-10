@@ -58,7 +58,6 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(ValidatorInterface::class, function () {
             return new ValidatorFactory([
                 new FromValidator(),
-                new ToValidator(),
                 new MoveValidator(),
                 new CaptureValidator(),
             ]);
