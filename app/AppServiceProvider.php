@@ -31,7 +31,6 @@ use YorkCS\Negasaurus\Generators\RookGenerator;
 use YorkCS\Negasaurus\Validators\CaptureValidator;
 use YorkCS\Negasaurus\Validators\FromValidator;
 use YorkCS\Negasaurus\Validators\MoveValidator;
-use YorkCS\Negasaurus\Validators\ToValidator;
 use YorkCS\Negasaurus\Validators\ValidatorFactory;
 use YorkCS\Negasaurus\Validators\ValidatorInterface;
 
