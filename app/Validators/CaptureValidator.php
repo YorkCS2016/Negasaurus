@@ -26,7 +26,7 @@ class CaptureValidator implements ValidatorInterface
     protected $generator;
 
     /**
-     * Create a move validator instance.
+     * Create a capture validator instance.
      *
      * @param \YorkCS\Negasaurus\Generators\GeneratorInterface $generator
      *

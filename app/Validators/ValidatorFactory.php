@@ -46,7 +46,7 @@ class ValidatorFactory implements ValidatorInterface
      *
      * @return void
      */
-    public function validate(array $board, int $player, array $from, array $to, array $generated)
+    public function validate(array $board, int $player, array $from, array $to)
     {
         foreach ($this->validators as $validator) {
             $validator->validate($board, $player, $from, $to);
