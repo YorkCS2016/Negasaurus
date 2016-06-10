@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace YorkCS\Negasaurus\Validators;
 
-use YorkCS\Negasaurus\Generators\GeneratorInterface;
 use YorkCS\Negasaurus\Exceptions\InvalidMoveException;
+use YorkCS\Negasaurus\Generators\GeneratorInterface;
 
 class CaptureValidator implements ValidatorInterface
 {
