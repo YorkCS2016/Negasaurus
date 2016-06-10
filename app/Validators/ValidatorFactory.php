@@ -41,7 +41,6 @@ class ValidatorFactory implements ValidatorInterface
      * @param int     $player
      * @param int[]   $from
      * @param int[]   $to
-     * @param int[][] $generated
      *
      * @throws \YorkCS\Negasaurus\Exceptions\InvalidMoveException
      *
@@ -50,7 +49,7 @@ class ValidatorFactory implements ValidatorInterface
     public function validate(array $board, int $player, array $from, array $to, array $generated)
     {
         foreach ($this->validators as $validator) {
-            $validator->validate($board, $player, $from, $to, $generated);
+            $validator->validate($board, $player, $from, $to);
         }
     }
 }

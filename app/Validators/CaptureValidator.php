@@ -13,10 +13,30 @@ declare(strict_types=1);
 
 namespace YorkCS\Negasaurus\Validators;
 
+use YorkCS\Negasaurus\Generators\GeneratorInterface;
 use YorkCS\Negasaurus\Exceptions\InvalidMoveException;
 
 class CaptureValidator implements ValidatorInterface
 {
+    /**
+     * The move generator instance.
+     *
+     * @var \YorkCS\Negasaurus\Validators\GeneratorInterface
+     */
+    protected $generator;
+
+    /**
+     * Create a move validator instance.
+     *
+     * @param \YorkCS\Negasaurus\Generators\GeneratorInterface $generator
+     *
+     * @return void
+     */
+    public function __construct(GeneratorInterface $generator)
+    {
+        $this->generator = $generator;
+    }
+
     /**
      * Validate the given move by the given player.
      *
@@ -24,15 +44,14 @@ class CaptureValidator implements ValidatorInterface
      * @param int     $player
      * @param int[]   $from
      * @param int[]   $to
-     * @param int[][] $generated
      *
      * @throws \YorkCS\Negasaurus\Exceptions\InvalidMoveException
      *
      * @return void
      */
-    public function validate(array $board, int $player, array $from, array $to, array $generated)
+    public function validate(array $board, int $player, array $from, array $to)
     {
-        if (!$this->isCapture($board, $to) && $this->capturesAreAvailable($board, $generated)) {
+        if (!$this->isCapture($board, $to) && $this->capturesAreAvailable($board, $player)) {
             throw new InvalidMoveException('You must take one of your opponent\'s pieces.');
         }
     }
@@ -45,7 +64,7 @@ class CaptureValidator implements ValidatorInterface
      *
      * @return bool
      */
-    public function isCapture(array $board, array $to)
+    protected function isCapture(array $board, array $to)
     {
         return $board[$to[0]][$to[1]][1] !== null;
     }
@@ -54,18 +73,43 @@ class CaptureValidator implements ValidatorInterface
      * Is it possible to capture a piece?
      *
      * @param int[][] $board
-     * @param int[][] $generated
+     * @param int     $player
      *
      * @return bool
      */
-    public function capturesAreAvailable(array $board, array $generated)
+    protected function capturesAreAvailable(array $board, int $player)
     {
-        foreach ($generated as $move) {
-            if ($board[$move[0]][$move[1]][0] !== null) {
-                return true;
+        foreach ($this->getPieces($board, $player) as $pos) {
+            foreach ($this->generator->generate($board, $pos) as $move) {
+                if ($board[$move[0]][$move[1]][0] !== null) {
+                    return true;
+                }
             }
         }
 
         return false;
+    }
+
+    /**
+     * Get the candidate pieces to move.
+     *
+     * @param int[][] $board
+     * @param int     $player
+     *
+     * @return bool
+     */
+    protected function getPieces(array $board, int $player)
+    {
+        $pieces = [];
+
+        foreach ($board as $row) {
+            foreach ($row as $col) {
+                if ($board[$row][$col][1] === $player) {
+                    $pieces[] = [$row, $col];
+                }
+            }
+        }
+
+        return $pieces;
     }
 }

@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace YorkCS\Negasaurus;
 
+use Illuminate\Contracts\Container\Container;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\ServiceProvider;
@@ -54,11 +55,11 @@ class AppServiceProvider extends ServiceProvider
             ]);
         });
 
-        $this->app->singleton(ValidatorInterface::class, function () {
+        $this->app->singleton(ValidatorInterface::class, function (Container $app) {
             return new ValidatorFactory([
-                new FromValidator(),
-                new MoveValidator(),
-                new CaptureValidator(),
+                $app->make(FromValidator::class),
+                $app->make(MoveValidator::class),
+                $app->make(CaptureValidator::class),
             ]);
         });
 

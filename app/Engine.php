@@ -17,7 +17,6 @@ use Illuminate\Contracts\Cache\Repository;
 use Pusher;
 use YorkCS\Negasaurus\Exceptions\GameNotFoundException;
 use YorkCS\Negasaurus\Exceptions\OpponentMovingException;
-use YorkCS\Negasaurus\Generators\GeneratorInterface;
 use YorkCS\Negasaurus\Validators\ValidatorInterface;
 
 final class Engine
@@ -51,13 +50,6 @@ final class Engine
     protected $pusher;
 
     /**
-     * The move generator instance.
-     *
-     * @var \YorkCS\Negasaurus\Validators\GeneratorInterface
-     */
-    private $generator;
-
-    /**
      * The move validator instance.
      *
      * @var \YorkCS\Negasaurus\Validators\ValidatorInterface
@@ -69,16 +61,14 @@ final class Engine
      *
      * @param \Illuminate\Contracts\Cache\Repository           $cache
      * @param \Pusher                                          $pusher
-     * @param \YorkCS\Negasaurus\Generators\GeneratorInterface $generator
      * @param \YorkCS\Negasaurus\Validators\ValidatorInterface $validator
      *
      * @return void
      */
-    public function __construct(Repository $cache, Pusher $pusher, GeneratorInterface $generator, ValidatorInterface $validator)
+    public function __construct(Repository $cache, Pusher $pusher, ValidatorInterface $validator)
     {
         $this->cache = $cache;
         $this->pusher = $pusher;
-        $this->generator = $generator;
         $this->validator = $validator;
     }
 
@@ -128,9 +118,8 @@ final class Engine
 
         $board = $state->getBoard();
         $player = $state->getCurrentPlayer();
-        $generated = $this->generator->generate($board, $from);
 
-        $this->validator->validate($board, $player, $from, $to, $generated);
+        $this->validator->validate($board, $player, $from, $to);
 
         $state->makeMove($from, $to);
 

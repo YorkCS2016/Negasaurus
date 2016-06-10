@@ -13,10 +13,30 @@ declare(strict_types=1);
 
 namespace YorkCS\Negasaurus\Validators;
 
+use YorkCS\Negasaurus\Generators\GeneratorInterface;
 use YorkCS\Negasaurus\Exceptions\InvalidMoveException;
 
 class MoveValidator implements ValidatorInterface
 {
+    /**
+     * The move generator instance.
+     *
+     * @var \YorkCS\Negasaurus\Validators\GeneratorInterface
+     */
+    protected $generator;
+
+    /**
+     * Create a move validator instance.
+     *
+     * @param \YorkCS\Negasaurus\Generators\GeneratorInterface $generator
+     *
+     * @return void
+     */
+    public function __construct(GeneratorInterface $generator)
+    {
+        $this->generator = $generator;
+    }
+
     /**
      * Validate the given move by the given player.
      *
@@ -24,15 +44,16 @@ class MoveValidator implements ValidatorInterface
      * @param int     $player
      * @param int[]   $from
      * @param int[]   $to
-     * @param int[][] $generated
      *
      * @throws \YorkCS\Negasaurus\Exceptions\InvalidMoveException
      *
      * @return void
      */
-    public function validate(array $board, int $player, array $from, array $to, array $generated)
+    public function validate(array $board, int $player, array $from, array $to)
     {
-        if (!in_array($to, $generated, true)) {
+        $moves = $this->generator->generator($board, $from);
+
+        if (!in_array($to, $moves, true)) {
             throw new InvalidMoveException('Your piece cannot move like that.');
         }
     }
